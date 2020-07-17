@@ -1,0 +1,30 @@
+﻿@model IEnumerable<string>
+
+@{
+    Layout = null;
+}
+<style>
+
+    .btn-primary {
+        background-color: rgba(235, 190, 45, 0.6);
+        color:white;
+    }
+</style>
+
+@foreach (var link in Model)
+{
+        
+    @Html.RouteLink(link, new
+{
+    controller = "ManagerNote",
+    action = "Index",
+    titleOfNote = link,
+
+}, new
+{
+    @class = "btn btn-block btn-default btn-lg"
+            + (link == ViewBag.SelectedNote ? " btn-primary" : "")
+})
+}
+
+

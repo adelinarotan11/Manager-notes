@@ -1,0 +1,73 @@
+﻿@using TestTask_ManagerNotes.Models
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer _localizer
+@model ManagerNoteAll
+
+@{
+    ViewData["Title"] = _localizer["Manager notes"];
+
+}
+
+<style>
+    table {
+        background-color: #212529;
+    }
+
+    tbody tr:hover {
+        color: #222124;
+    }
+
+    h1 {
+        color: orange;
+    }
+
+</style>
+
+        <h1 align="center"> @_localizer["Manager notes"]</h1>
+        <br />
+
+        <div class="panel panel-default">
+            <div class="panel-body fixed-panel">
+                <div class="col-sm-3">
+                    <a asp-action="AddOrEdit" class="btn warm"><i class="far fa-plus-square"></i> @_localizer["Add"]</a>
+                    <br /> <br />
+                    <div id="TitleNotes" asp-action="ListOfNotes">
+
+                        @Html.Action("ListOfNotes", "ManagerNote")
+
+                    </div>
+                </div>
+                @if (ViewBag.message == null)
+                {
+                    <div class="col-xs-12 col-sm-9">
+
+                        <br />
+                        <br />
+                        <form asp-action="ListOfNotes" asp-controller="ManagerNote"
+                              data-ajax="true"
+                              data-ajax-method="POST"
+                              data-ajax-mode="replace"
+                              data-ajax-update="#ajaxresult">
+
+                            <div id="ajaxresult">
+                                @await Html.PartialAsync("TextOfNotePartial", Model.ManagerNotes)
+                            </div>
+                        </form>
+                    </div>
+                }
+                else
+                {
+                    <div class="col-xs-12 col-sm-9 well">
+
+                        <h4>
+                            @ViewBag.message
+                        </h4>
+
+                    </div>
+                }
+
+            </div>
+        </div>
+
+
+

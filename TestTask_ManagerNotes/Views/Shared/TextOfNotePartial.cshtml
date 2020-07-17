@@ -1,0 +1,20 @@
+﻿@model IEnumerable<TestTask_ManagerNotes.Models.ManagerNote>
+
+
+
+
+@foreach (var item in Model)
+{
+   
+        <div class="well">
+            <div class="pull-right">
+                <a asp-action="AddOrEdit" asp-route-id="@item.ManagerNotesId"><i class="fa fa-marker fa-m"></i></a>
+                <a asp-action="Delete" asp-route-id="@item.ManagerNotesId" class="text-danger ml-1" onclick="return confirm('Are you sure to delete this item?')"><i class="fa fa-trash-alt fa-m"></i></a>
+            </div>
+            <h2>
+                @Html.DisplayFor(modelItem => item.Title)
+            </h2>
+            <hr />
+            <p>@Html.DisplayFor(modelItem => item.TextOfNote)</p>
+        </div>
+}

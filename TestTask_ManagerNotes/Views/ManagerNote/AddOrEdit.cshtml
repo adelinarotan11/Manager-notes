@@ -1,0 +1,43 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer _localizer
+@model TestTask_ManagerNotes.Models.ManagerNote
+
+@{
+    ViewData["Title"] = @_localizer["Submit"];
+}
+
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="AddOrEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ManagerNotesId" />
+            
+            <div class="form-group">
+                <br/>
+                <label class="control-label">@_localizer["Title"]</label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">@_localizer["Text of Note"]</label>
+                <textarea placeholder="Typing something..." cols="30" rows="10" asp-for="TextOfNote" class="form-control"></textarea>
+                <span asp-validation-for="TextOfNote" class="text-danger"></span>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <input type="submit" value=@_localizer["Submit"] class="btn btn-primary btn-block" />
+                </div>
+                <div class="form-group col-md-6">
+                    <a asp-action="Index" class="btn btn-default btn-block"><i class="fa fa-table"></i> @_localizer["Back to List"]</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

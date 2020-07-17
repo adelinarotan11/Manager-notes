@@ -1,0 +1,115 @@
+﻿body {
+    background: url(/images/backgr_D.jpg) no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+}
+
+.btn {
+    color: black;
+    font-size: 14px;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-color: grey;
+}
+
+.warm {
+    border: 2px solid;
+    border-color: orange;
+    color: orange;
+    background-color: mintcream;
+    padding: 10px 35px 10px 35px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+footer {
+    padding: 6em 15px 0 15px;
+}
+textarea {
+    resize: vertical;
+    border: 1px solid #888;
+}
+.well {
+    background-color: rgba(235, 190, 45, 0.6);
+    background-attachment: fixed;
+    color: white;
+    background-size: cover;
+   border-color:grey;
+}
+.panel-default {
+    background-color: rgba(148, 144, 132, 0.5);
+    border-color: gray;
+    height: 400px;
+    overflow-y: scroll;
+}
+    /*preloader*/
+    .preloader {
+    /*фиксированное позиционирование*/
+    position: fixed;
+    /* координаты положения */
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    /* размещаем блок над всеми элементами на странице (это значение должно быть больше, чем у любого другого позиционированного элемента на странице) */
+    z-index: 2000;
+    background-color:black;
+}
+
+.preloader__row {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 70px;
+    height: 70px;
+    margin-top: -35px;
+    margin-left: -35px;
+    text-align: center;
+    animation: preloader-rotate 2s infinite linear;
+
+}
+
+.preloader__item {
+    position: absolute;
+    display: inline-block;
+    top: 0;
+    background-color: #337ab7;
+    border-radius: 100%;
+    width: 35px;
+    height: 35px;
+    animation: preloader-bounce 2s infinite ease-in-out;
+}
+
+    .preloader__item:last-child {
+        top: auto;
+        bottom: 0;
+        animation-delay: -1s;
+    }
+
+@keyframes preloader-rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes preloader-bounce {
+
+    0%, 100% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+}
+
+.loaded_hiding .preloader {
+    transition: 0.3s opacity;
+    opacity: 0;
+}
+
+.loaded .preloader {
+    display: none;
+}
